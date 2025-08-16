@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="観葉植物の育て方、お手入れ方法、インテリアへの取り入れ方など、初心者から上級者まで楽しめる情報をお届けする植物ブログ">
+    <meta name="keywords" content="観葉植物,モンステラ,ポトス,育て方,インテリア,初心者">
+    
+    <!-- OGP設定 -->
+    <meta property="og:title" content="Plant Journal - 観葉植物ブログ">
+    <meta property="og:description" content="観葉植物との素敵な暮らしを始めるための情報をお届けします">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    
+    <title>Plant Journal - 観葉植物ブログ | 初心者向け育て方ガイド</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #f8faf9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2d5a27;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ヘッダー */
+        header {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #2d5a27;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2d5a27;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            color: #2d5a27;
+            outline: none;
+        }
+
+        .nav-menu a.active {
+            color: #2d5a27;
+            font-weight: 600;
+        }
+
+        /* ヒーロー */
+        .hero {
+            background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* メインコンテンツ */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* 記事リスト */
+        .articles-section h2 {
+            font-size: 2rem;
+            color: #2d5a27;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #4a7c59;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .article-card:hover,
+        .article-card:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-image {
+            height: 250px;
+            background: linear-gradient(45deg, #81C784, #66BB6A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .article-meta time {
+            display: inline-block;
+        }
+
+        .article-category {
+            background: #e8f5e8;
+            color: #2d5a27;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #2d5a27;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .read-more:hover,
+        .read-more:focus {
+            color: #4a7c59;
+            outline: none;
+        }
+
+        .read-more:focus {
+            text-decoration: underline;
+        }
+
+        /* サイドバー */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .widget h3 {
+            color: #2d5a27;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #e8f5e8;
+            padding-bottom: 0.5rem;
+        }
+
+        .popular-post {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .popular-post:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .popular-post-image {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #81C784, #66BB6A);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .popular-post-content h4 {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 0.3rem;
+        }
+
+        .popular-post-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .categories-list {
+            list-style: none;
+        }
+
+        .categories-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .categories-list a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.3rem 0;
+        }
+
+        .categories-list a:hover,
+        .categories-list a:focus {
+            color: #2d5a27;
+            outline: none;
+        }
+
+        .category-count {
+            background: #e8f5e8;
+            color: #2d5a27;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover,
+        .tag:focus {
+            background: #2d5a27;
+            color: white;
+            outline: none;
+        }
+
+        /* フッター */
+        footer {
+            background: #2d5a27;
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #81C784;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover,
+        .footer-section a:focus {
+            color: white;
+            outline: none;
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #4a7c59;
+            color: #ccc;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 968px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .article-image {
+                height: 200px;
+                font-size: 3rem;
+            }
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .article-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* モーダル */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: #2d5a27;
+            margin-bottom: 1rem;
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #888;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            background-color: #f0f0f0;
+            color: #333;
+            outline: none;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            line-height: 1.8;
+        }
+
+        .modal-body h3 {
+            color: #2d5a27;
+            margin: 2rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #81C784, #66BB6A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .sidebar, footer, .modal {
+                display: none;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-card {
+                break-inside: avoid;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2d5a27;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main" class="skip-link">メインコンテンツへスキップ</a>
+
+    <!-- ヘッダー -->
+    <header role="banner">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo" aria-label="Plant Journal ホームページへ">
+                    <span aria-hidden="true">🌿</span> Plant Journal
+                </a>
+                <button class="mobile-menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                    ☰
+                </button>
+                <nav role="navigation" aria-label="メインナビゲーション">
+                    <ul class="nav-menu">
+                        <li><a href="#" class="active" aria-current="page">ホーム</a></li>
+                        <li><a href="#growing">育て方</a></li>
+                        <li><a href="#catalog">植物図鑑</a></li>
+                        <li><a href="#seasonal">季節のケア</a></li>
+                        <li><a href="#qa">お悩み相談</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーロー -->
+    <section class="hero" role="region" aria-label="サイト紹介">
+        <div class="container">
+            <h1>Plant Journal</h1>
+            <p>観葉植物との素敵な暮らしを始めるための情報をお届けします</p>
+        </div>
+    </section>
+
+    <!-- メインコンテンツ -->
+    <div class="container">
+        <div class="main-content">
+            <!-- 記事リスト -->
+            <main id="main" class="articles-section" role="main">
+                <h2>最新記事</h2>
+                
+                <article class="article-card" onclick="openModal('modal1')" tabindex="0" role="article" aria-label="記事: 初心者でも失敗しない！モンステラの育て方完全ガイド">
+                    <div class="article-image" aria-hidden="true">🌿</div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">初心者向け</span>
+                            <time datetime="2025-08-15">2025年8月15日</time>
+                        </div>
+                        <h3 class="article-title">初心者でも失敗しない！モンステラの育て方完全ガイド</h3>
+                        <p class="article-excerpt">大きな葉っぱが魅力的なモンステラ。実は初心者でも簡単に育てることができる観葉植物なんです。水やりのタイミングから最適な置き場所まで、詳しく解説します...</p>
+                        <a href="#" class="read-more" aria-label="モンステラの育て方の続きを読む">続きを読む <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+
+                <article class="article-card" onclick="openModal('modal2')" tabindex="0" role="article" aria-label="記事: 夏の観葉植物ケア">
+                    <div class="article-image" aria-hidden="true">🌵</div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">お手入れ</span>
+                            <time datetime="2025-08-12">2025年8月12日</time>
+                        </div>
+                        <h3 class="article-title">夏の観葉植物ケア：暑さに負けない管理方法</h3>
+                        <p class="article-excerpt">暑い夏は観葉植物にとってもストレスの多い季節。適切な水やり頻度、エアコンとの付き合い方、直射日光対策など、夏を乗り切るコツをお教えします...</p>
+                        <a href="#" class="read-more" aria-label="夏の観葉植物ケアの続きを読む">続きを読む <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+
+                <article class="article-card" onclick="openModal('modal3')" tabindex="0" role="article" aria-label="記事: スペースを活用した植物配置術">
+                    <div class="article-image" aria-hidden="true">🍃</div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">インテリア</span>
+                            <time datetime="2025-08-10">2025年8月10日</time>
+                        </div>
+                        <h3 class="article-title">小さなお部屋でも大丈夫！スペースを活用した植物配置術</h3>
+                        <p class="article-excerpt">狭いお部屋でも観葉植物を楽しみたい！そんな方のために、限られたスペースを最大限活用する配置のコツと、小さなお部屋におすすめの植物をご紹介...</p>
+                        <a href="#" class="read-more" aria-label="植物配置術の続きを読む">続きを読む <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+
+                <article class="article-card" onclick="openModal('modal4')" tabindex="0" role="article" aria-label="記事: 空気をキレイにする観葉植物">
+                    <div class="article-image" aria-hidden="true">🌱</div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">植物図鑑</span>
+                            <time datetime="2025-08-08">2025年8月8日</time>
+                        </div>
+                        <h3 class="article-title">空気をキレイにしてくれる観葉植物ベスト10</h3>
+                        <p class="article-excerpt">NASAの研究でも証明された、空気清浄効果の高い観葉植物をランキング形式でご紹介。お部屋の空気を自然にキレイにしながら、緑のある暮らしを楽しみませんか...</p>
+                        <a href="#" class="read-more" aria-label="空気清浄植物の続きを読む">続きを読む <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+
+                <article class="article-card" onclick="openModal('modal5')" tabindex="0" role="article" aria-label="記事: 葉が黄色くなる原因と対処法">
+                    <div class="article-image" aria-hidden="true">💧</div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">お悩み解決</span>
+                            <time datetime="2025-08-05">2025年8月5日</time>
+                        </div>
+                        <h3 class="article-title">観葉植物の葉が黄色くなる原因と対処法</h3>
+                        <p class="article-excerpt">「葉っぱが黄色くなってしまった...」そんな経験はありませんか？原因は水のやり過ぎ、栄養不足、病気など様々。症状別の診断方法と正しい対処法を解説します...</p>
+                        <a href="#" class="read-more" aria-label="葉の黄変対処法の続きを読む">続きを読む <span aria-hidden="true">→</span></a>
+                    </div>
+                </article>
+            </main>
+
+            <!-- サイドバー -->
+            <aside class="sidebar" role="complementary" aria-label="サイドバー">
+                <!-- 人気記事 -->
+                <section class="widget" aria-labelledby="popular-posts-heading">
+                    <h3 id="popular-posts-heading">人気記事</h3>
+                    <div class="popular-post">
+                        <div class="popular-post-image" aria-hidden="true">🌿</div>
+                        <div class="popular-post-content">
+                            <h4><a href="#">初心者向け観葉植物5選</a></h4>
+                            <time class="popular-post-date" datetime="2025-07-28">2025年7月28日</time>
+                        </div>
+                    </div>
+                    <div class="popular-post">
+                        <div class="popular-post-image" aria-hidden="true">💧</div>
+                        <div class="popular-post-content">
+                            <h4><a href="#">正しい水やりのタイミング</a></h4>
+                            <time class="popular-post-date" datetime="2025-07-25">2025年7月25日</time>
+                        </div>
+                    </div>
+                    <div class="popular-post">
+                        <div class="popular-post-image" aria-hidden="true">🌱</div>
+                        <div class="popular-post-content">
+                            <h4><a href="#">挿し木で増やす方法</a></h4>
+                            <time class="popular-post-date" datetime="2025-07-22">2025年7月22日</time>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- カテゴリー -->
+                <section class="widget" aria-labelledby="categories-heading">
+                    <h3 id="categories-heading">カテゴリー</h3>
+                    <ul class="categories-list">
+                        <li><a href="#beginner">初心者向け <span class="category-count" aria-label="15記事">15</span></a></li>
+                        <li><a href="#care">お手入れ <span class="category-count" aria-label="23記事">23</span></a></li>
+                        <li><a href="#catalog">植物図鑑 <span class="category-count" aria-label="18記事">18</span></a></li>
+                        <li><a href="#interior">インテリア <span class="category-count" aria-label="12記事">12</span></a></li>
+                        <li><a href="#trouble">お悩み解決 <span class="category-count" aria-label="9記事">9</span></a></li>
+                        <li><a href="#seasonal">季節のケア <span class="category-count" aria-label="8記事">8</span></a></li>
+                    </ul>
+                </section>
+
+                <!-- タグ -->
+                <section class="widget" aria-labelledby="tags-heading">
+                    <h3 id="tags-heading">人気タグ</h3>
+                    <div class="tags" role="list">
+                        <a href="#tag-monstera" class="tag" role="listitem">モンステラ</a>
+                        <a href="#tag-pothos" class="tag" role="listitem">ポトス</a>
+                        <a href="#tag-sansevieria" class="tag" role="listitem">サンスベリア</a>
+                        <a href="#tag-watering" class="tag" role="listitem">水やり</a>
+                        <a href="#tag-beginner" class="tag" role="listitem">初心者</a>
+                        <a href="#tag-placement" class="tag" role="listitem">置き場所</a>
+                        <a href="#tag-growing" class="tag" role="listitem">育て方</a>
+                        <a href="#tag-interior" class="tag" role="listitem">インテリア</a>
+                        <a href="#tag-airpurify" class="tag" role="listitem">空気清浄</a>
+                        <a href="#tag-cutting" class="tag" role="listitem">挿し木</a>
+                    </div>
+                </section>
+
+                <!-- プロフィール -->
+                <section class="widget" aria-labelledby="about-heading">
+                    <h3 id="about-heading">ブログについて</h3>
+                    <p>観葉植物歴10年のグリーンアドバイザーが、初心者の方でも安心して植物と
